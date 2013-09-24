@@ -1,6 +1,6 @@
 ======================
 Pokerbot
-======================
+======================  
 An artificial intelligence in Python designed to play online poker on Seals With Clubs.  
 ======================
 DEPENDENCIES
@@ -11,7 +11,7 @@ DEPENDENCIES
 -Pokermuck  
 ======================
 USAGE
-======================
+======================  
 Once entered for a single game (I'll later add auto registration for freerolls and multitabling support) run Pokermuck, the HUD for SWC. Then run bot.py.  
 ======================
 CHANGELOG
