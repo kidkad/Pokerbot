@@ -364,12 +364,34 @@ class AI:
         print gamestate.bblind
         relative_stack = self.hero.stack / int(gamestate.bblind)
         #shove all premiums
-        if hand_strength(hole_cards, board, None, 1000) >= 6.5:
+        hand_str = hand_strength(hole_cards, board, None, 5000)
+        if hand_str >= .65:
             return "shove"
-        if relative_stack >= 30:
-            #shove premiums if over 30 BBs
-            if hand_strength(hole_cards, board, None, 1000) >= 6.3:
+        elif relative_stack >= 15:
+            #if folded around to hero
+            all_fold = True
+            for action in gamestate.actions:
+                if action != "folds":
+                    all_fold = False
+                    break
+            if hand_str >= .55:
+                if hero.relative_pos >= 6:
+                    #if sitting in CO or later
+                    return "shove"
+                elif hero.relative_pos >= 5 and hand_str >= .6:
+                    return "shove"
+                else:
+                    return "fold"
+
+        elif relative_stack >= 5:
+            if hand_str >= .5:
                 return "shove"
+            else:
+                return "fold"
+        else:
+            return "shove"
+
+
 
 if __name__ == "__main__":
     pokerbot = AI()
@@ -391,3 +413,5 @@ if __name__ == "__main__":
     mygame = game.Gamestate()
     mygame.update()
     print pokerbot.act(mygame, ['8h', '8d'], board=[])
+    print pokerbot.act(mygame, ['Ac', 'Qh'], board=[])
+    print pokerbot.act(mygame, ['Kc', '9s'])
