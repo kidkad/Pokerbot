@@ -7,8 +7,11 @@ An artificial intelligence in Python designed to play online poker on Seals With
 DEPENDENCIES
 ======================
 -Python 2.7.3
+
 -Pytesser (Because pytesser lacks an installer, all the files must be unpacked into the project directory.)
+
 -Seals With Clubs client
+
 -Pokermuck
 
 ======================
